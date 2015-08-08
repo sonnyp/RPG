@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <input type="file"/>
+    <img src='../woah.png'>
+  </body>
+  <script>
+  (function() {
+    'use strict'
+    var input = document.querySelector('input')
+    var img = document.querySelector('img')
+    var height, width, rows, cols
+    img.onload = function() {
+      height = img.clientHeight
+      rows = height / 32
+      width = img.clientWidth
+      cols = width / 32
+      console.log(cols, rows)
+    }
+    input.onchange = function() {
+      var file = this.files[0]
+      img.src = URL.createObjectURL(file)
+    }
+    img.onclick = function(e) {
+      var x = e.offsetX
+      var y = e.offsetY
+      var col = Math.round(x / 32)
+      var row = Math.round(y / 32)
+      window.prompt('', '{x: ' + col + '; y: ' + row + '}')
+    }
+  }())
+  </script>
+</html>

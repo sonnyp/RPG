@@ -13,6 +13,26 @@
   })
   map.draw()
 
+  var tiles = [
+    [5, 5, {
+      0: [6, 3],
+    }, {walk: false}],
+    [2, 2, {
+      0: [5, 33],
+    }, {walk: false}],
+    [2, 1, {
+      0: [5, 32, 'hover'],
+    }, {walk: true}],
+    [-4, 2, {
+      0: [5, 33],
+    }, {walk: false}],
+    [-4, 1, {
+      0: [5, 32, 'hover'],
+    }, {walk: true}],
+  ]
+
+  map.fill(tiles)
+
   var player = global.RPG.player = new global.RPG.Player({
     el: document.getElementById('player'),
     x: 0,
@@ -22,19 +42,59 @@
     map: map,
   })
 
-  Mousetrap.bind('down', function() {
-    player.walkDown()
+  var dirKeys = {
+    'up': [
+      'w',
+      'up',
+      'k',
+    ],
+    'down': [
+      's',
+      'down',
+      'j',
+    ],
+    'left': [
+      'a',
+      'left',
+      'h',
+    ],
+    'right': [
+      'd',
+      'right',
+      'l',
+    ],
+    'jump': [
+      'space',
+    ],
+  }
+
+  var listener = new window.keypress.Listener()
+
+  Object.keys(dirKeys).forEach(function(dir) {
+    dirKeys[dir].forEach(function(key) {
+      listener.simple_combo(key, function() {
+        player[dir]()
+      })
+    })
   })
-  Mousetrap.bind('up', function() {
-    player.walkUp()
-  })
-  Mousetrap.bind('left', function() {
-    player.walkLeft()
-  })
-  Mousetrap.bind('right', function() {
-    player.walkRight()
-  })
-  Mousetrap.bind('space', function() {
-    player.jump()
-  })
+
+  // listener.simple_combo("w", function() {
+  //   player.walkUp()
+  // })
+  // Mousetrap.bind('down', function() {
+  //   player.walkDown()
+  // })
+
+  // Mousetrap.bind('up', function() {
+  //   player.walkUp()
+  // })
+  // Mousetrap.bind('left', function() {
+  //   player.walkLeft()
+  // })
+  // Mousetrap.bind('right', function() {
+  //   player.walkRight()
+  // })
+  // Mousetrap.bind('space', function() {
+  //   player.jump()
+  // })
 }(this))

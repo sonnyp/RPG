@@ -18,6 +18,7 @@ html, body {
   width: 32px;
   height: 48px;
   position: fixed;
+  z-index: 1;
   /*transition: left .25s linear, top .25s linear;*/
   /*top: 50px;*/
   /*left: 200px;*/
@@ -102,8 +103,19 @@ html, body {
   width: 32px;
   height: 32px;
   display: inline-block;
-  /*background-color: red;*/
   background-image: url('woah.png');
   background-position: -256px -64px;
   background-repeat: no-repeat;
+}
+
+.layer {
+  width: 100%;
+  height: 100%;
+  background-image: url('woah.png');
+  background-repeat: no-repeat;
+}
+
+.layer.hover {
+  position: relative;
+  z-index: 2;
 }
