@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="sidebar">
+      <img src="woah.png" hidden="hidden" usemap="#planetmap"/>
+      <map name="planetmap"/>
+    </div>
+    <div id="world">
+      <div id="layer">
+        <div id="player" data-dir="down"/>
+      </div>
+      <div id="map"></div>
+    </div>
+  </body>
+  <script src="mousetrap.js"></script>
+  <script src="move.js"></script>
+  <script>
+    window.RPG = {}
+  </script>
+  <script src="lib/World.js"></script>
+  <script src="lib/Map.js"></script>
+  <script src="lib/Player.js"></script>
+  <script src="script.js"></script>
+</html>

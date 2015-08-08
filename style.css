@@ -1,0 +1,109 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#layer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#player {
+  background-image: url('char.png');
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 48px;
+  position: fixed;
+  /*transition: left .25s linear, top .25s linear;*/
+  /*top: 50px;*/
+  /*left: 200px;*/
+  /*background-position: 0px 0px;*/
+  /*animation: faceright .5s steps(4) infinite;*/
+}
+
+/* down */
+#player[data-dir="down"] {
+  background-position: 0px 0px;
+}
+#player.animate[data-dir="down"] {
+  animation: facedown .5s steps(4) infinite;
+}
+@keyframes facedown {
+   from {background-position: 0px 0px; }
+     to { background-position: -128px 0px; }
+}
+
+/* left */
+#player[data-dir="left"] {
+  background-position: 0px -48px;
+}
+#player.animate[data-dir="left"] {
+  animation: faceleft .5s steps(4) infinite;
+}
+@keyframes faceleft {
+  from {
+    background-position: 0px -48px;
+  }
+  to {
+    background-position: -128px -48px;
+  }
+}
+
+/* right */
+#player[data-dir="right"] {
+  background-position: 0px -96px;
+}
+#player.animate[data-dir="right"] {
+  animation: faceright .5s steps(4) infinite;
+}
+@keyframes faceright {
+   from { background-position: 0px -96px; }
+     to { background-position: -128px -96px; }
+}
+
+/* up */
+#player[data-dir="up"] {
+  background-position: 0px -144px;
+}
+#player.animate[data-dir="up"] {
+  animation: faceup .5s steps(4) infinite;
+}
+@keyframes faceup {
+   from { background-position: 0px -144px; }
+     to { background-position: -128px -144px; }
+}
+
+
+
+#world {
+  width: 100%;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: flex-start;
+}
+
+#sidebar {
+  position: fixed;
+  background-color: grey;
+}
+
+.tile {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  /*background-color: red;*/
+  background-image: url('woah.png');
+  background-position: -256px -64px;
+  background-repeat: no-repeat;
+}
