@@ -27,9 +27,9 @@ html, body {
 }
 
 /* down */
-#player[data-dir="down"] {
+/*#player[data-dir="down"] {
   background-position: 0px 0px;
-}
+}*/
 #player.animate[data-dir="down"] {
   animation: facedown .5s steps(4) infinite;
 }
@@ -39,9 +39,9 @@ html, body {
 }
 
 /* left */
-#player[data-dir="left"] {
+/*#player[data-dir="left"] {
   background-position: 0px -48px;
-}
+}*/
 #player.animate[data-dir="left"] {
   animation: faceleft .5s steps(4) infinite;
 }
@@ -55,9 +55,9 @@ html, body {
 }
 
 /* right */
-#player[data-dir="right"] {
+/*#player[data-dir="right"] {
   background-position: 0px -96px;
-}
+}*/
 #player.animate[data-dir="right"] {
   animation: faceright .5s steps(4) infinite;
 }
@@ -67,9 +67,9 @@ html, body {
 }
 
 /* up */
-#player[data-dir="up"] {
+/*#player[data-dir="up"] {
   background-position: 0px -144px;
-}
+}*/
 #player.animate[data-dir="up"] {
   animation: faceup .5s steps(4) infinite;
 }

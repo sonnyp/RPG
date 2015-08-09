@@ -23,6 +23,8 @@
     [2, 1, {
       0: [5, 32, 'hover'],
     }, {walk: true}],
+
+    // tree 1
     [-4, 2, {
       0: [5, 33],
     }, {walk: false}],
@@ -30,6 +32,7 @@
       0: [5, 32, 'hover'],
     }, {walk: true}],
 
+    // tree
     [-4, -5, {
       0: [9, 10 ],
     }, {walk: false, jump: true}],
@@ -75,6 +78,18 @@
     },
     'jump': {
       keys: ['space'],
+    },
+    'upLeft': {
+      keys: ['q'],
+    },
+    'upRight': {
+      keys: ['e'],
+    },
+    'downLeft': {
+      keys: ['z'],
+    },
+    'downRight': {
+      keys: ['x'],
     },
   }
   var listener = new window.keypress.Listener()
