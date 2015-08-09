@@ -15,7 +15,7 @@
 
   var tiles = [
     [5, 5, {
-      0: [6, 3],
+      0: [26, 39],
     }, {walk: false}],
     [2, 2, {
       0: [5, 33],
@@ -29,6 +29,24 @@
     [-4, 1, {
       0: [5, 32, 'hover'],
     }, {walk: true}],
+
+    [-4, -5, {
+      0: [9, 10 ],
+    }, {walk: false, jump: true}],
+    [-4, -4, {
+      0: [9, 11],
+    }, {walk: false, jump: true}],
+
+    [-2, -1, {
+      0: [13, 48, 'hover'],
+    }, {walk: true, jump: true}],
+    [-1, -1, {
+      0: [14, 48, 'hover'],
+    }, {walk: true, jump: true}],
+    [0, -1, {
+      0: [15, 48, 'hover'],
+    }, {walk: true, jump: true}],
+
   ]
 
   map.fill(tiles)
@@ -42,59 +60,40 @@
     map: map,
   })
 
-  var dirKeys = {
-    'up': [
-      'w',
-      'up',
-      'k',
-    ],
-    'down': [
-      's',
-      'down',
-      'j',
-    ],
-    'left': [
-      'a',
-      'left',
-      'h',
-    ],
-    'right': [
-      'd',
-      'right',
-      'l',
-    ],
-    'jump': [
-      'space',
-    ],
+  var actions = {
+    'up': {
+      keys: ['w', 'up', 'k'],
+    },
+    'down': {
+      keys: ['s', 'down', 'j'],
+    },
+    'left': {
+      keys: ['a', 'left', 'h'],
+    },
+    'right': {
+      keys: ['d', 'right', 'l'],
+    },
+    'jump': {
+      keys: ['space'],
+    },
   }
-
   var listener = new window.keypress.Listener()
-
-  Object.keys(dirKeys).forEach(function(dir) {
-    dirKeys[dir].forEach(function(key) {
-      listener.simple_combo(key, function() {
-        player[dir]()
+  var currentAction
+  Object.keys(actions).forEach(function(name) {
+    var action = actions[name]
+    action.keys.forEach(function(key) {
+      listener.register_combo({
+        keys: key,
+        prevent_repeat: true,
+        on_keydown: function() {
+          currentAction = name
+          player.do(name)
+        },
+        on_keyup: function() {
+          if (currentAction === name)
+            player.do('stop')
+        },
       })
     })
   })
-
-  // listener.simple_combo("w", function() {
-  //   player.walkUp()
-  // })
-  // Mousetrap.bind('down', function() {
-  //   player.walkDown()
-  // })
-
-  // Mousetrap.bind('up', function() {
-  //   player.walkUp()
-  // })
-  // Mousetrap.bind('left', function() {
-  //   player.walkLeft()
-  // })
-  // Mousetrap.bind('right', function() {
-  //   player.walkRight()
-  // })
-  // Mousetrap.bind('space', function() {
-  //   player.jump()
-  // })
 }(this))
